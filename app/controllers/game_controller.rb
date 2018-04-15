@@ -12,25 +12,25 @@ class GameController < ApplicationController
       case input.name
       when "attack"
         message = "oh yeah kill those enemies nice job"
-        @@current_txt = input.name
+        @@current_txt = @@current_txt_ + [input.name]
       when "spin"
         message = "you spin me right round"
-        @@current_txt = input.name
+        @@current_txt = @@current_txt_ + [input.name]
       when "block"
         message = "block time"
-        @@current_txt = input.name
+        @@current_txt = @@current_txt_ + [input.name]
       when "shoot"
         message = "firing weapon"
-        @@current_txt = input.name
+        @@current_txt = @@current_txt_ + [input.name]
       when "cover"
         message = "going into cover"
-        @@current_txt = input.name
+        @@current_txt = @@current_txt_ + [input.name]
       when "heal"
         message = "looking for medical supplies"
-        @@current_txt = input.name
+        @@current_txt = @@current_txt_ + [input.name]
       when "charge"
         message = "charging next attack"
-        @@current_txt = input.name
+        @@current_txt = @@current_txt_ + [input.name]
       when "AMAZON.HelpIntent"
         message = "ok u asked for help!"
       when "AMAZON.CancelIntent"
