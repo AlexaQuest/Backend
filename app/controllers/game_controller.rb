@@ -35,7 +35,7 @@ class GameController < ApplicationController
       when "AMAZON.HelpIntent"
         message = "ok u asked for help!"
       when "AMAZON.CancelIntent"
-        message = "okay, ending game."
+        message = ""
         session_end = false
       when "AMAZON.StopIntent"
         message = "okay, ending game."
