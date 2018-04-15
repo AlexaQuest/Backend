@@ -23,13 +23,13 @@ class GameController < ApplicationController
         output.add_speech "firing weapon"
         @@current_txt = @@current_txt + [input.name]
       when "cover"
-        message = "going into cover"
+        output.add_speech "going into cover"
         @@current_txt = @@current_txt + [input.name]
       when "heal"
-        message = "looking for medical supplies"
+        output.add_speech "looking for medical supplies"
         @@current_txt = @@current_txt + [input.name]
       when "charge"
-        message = "charging next attack"
+        output.add_speech "charging next attack"
         @@current_txt = @@current_txt + [input.name]
       when "AMAZON.HelpIntent"
         output.add_speech "say attack, spin, block, shoot, cover, heal, or charge."
