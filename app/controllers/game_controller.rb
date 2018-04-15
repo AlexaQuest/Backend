@@ -3,7 +3,7 @@ class GameController < ApplicationController
     input = AlexaRubykit.build_request(params)
     output = AlexaRubykit::Response.new
     session_end = true
-    message = "There was an error." # unknown thing happened
+    message = "There was not an error." # unknown thing happened
 
     case input.type
     when "LAUNCH_REQUEST"
