@@ -14,7 +14,6 @@ class GameController < ApplicationController
         message = "oh yeah kill those enemies nice job"
         @@current_txt = @@current_txt + [input.name]
       when "spin"
-        # message = "you spin me right round"
         message = ""
         output.add_audio_url(root_url + "spin.mp3", "token-here")
         @@current_txt = @@current_txt + [input.name]
@@ -37,7 +36,7 @@ class GameController < ApplicationController
         message = "ok u asked for help!"
       when "AMAZON.CancelIntent"
         message = "okay, ending game."
-        session_end = true
+        session_end = false
       when "AMAZON.StopIntent"
         message = "okay, ending game."
         session_end = true
