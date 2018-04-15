@@ -29,7 +29,7 @@ class GameController < ApplicationController
         output.add_speech "I'm out of potions!"
         @@current_txt = @@current_txt + [input.name]
       when "charge"
-        output.add_speech "My blade is unwielding."
+        output.add_speech "My blade is unyielding."
         @@current_txt = @@current_txt + [input.name]
       when "AMAZON.HelpIntent"
         output.add_speech "Say attack, spin, block, shoot, cover, heal, or charge to play."
