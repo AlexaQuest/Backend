@@ -15,7 +15,7 @@ class GameController < ApplicationController
       message = "You said, #{given}."
     when "SESSION_ENDED_REQUEST"
       # it's over
-      message = nil
+      message = "session over!"
     end
 
     output.add_speech(message) unless message.blank?
