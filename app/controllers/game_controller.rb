@@ -7,21 +7,20 @@ class GameController < ApplicationController
 
     case input.type
     when "LAUNCH_REQUEST"
-      message = "Say something see what happens."
+      message = "Welcome to AlexaQuest."
     when "INTENT_REQUEST"
       case input.name
       when "attack"
-        message = "oh yeah kill those enemies nice job"
+        output.add_speech "ATTACK!"
         @@current_txt = @@current_txt + [input.name]
       when "spin"
-        message = ""
         output.add_audio_url(root_url + "spin.mp3", "token-here")
         @@current_txt = @@current_txt + [input.name]
       when "block"
-        message = "block time"
+        output.add_speech "block time"
         @@current_txt = @@current_txt + [input.name]
       when "shoot"
-        message = "firing weapon"
+        output.add_speech "firing weapon"
         @@current_txt = @@current_txt + [input.name]
       when "cover"
         message = "going into cover"
@@ -33,20 +32,16 @@ class GameController < ApplicationController
         message = "charging next attack"
         @@current_txt = @@current_txt + [input.name]
       when "AMAZON.HelpIntent"
-        message = "ok u asked for help!"
+        output.add_speech "say attack, spin, block, shoot, cover, heal, or charge."
       when "AMAZON.CancelIntent"
-        message = ""
-        session_end = false
+        # session_end = true
       when "AMAZON.StopIntent"
-        message = "okay, ending game."
         session_end = true
       end
     when "SESSION_ENDED_REQUEST"
-      message = "session over!"
       session_end = true
     end
 
-    output.add_speech(message) unless message.blank?
     render json: output.build_response(session_end)
   end
 
