@@ -9,6 +9,7 @@ class GameController < ApplicationController
     when "LAUNCH_REQUEST"
       # user talked to our skill but did not say something matching intent
       message = "Say something see what happens."
+      session_end = false
     when "INTENT_REQUEST"
       # our custom, simple intent from above that user matched
       given = input.slots["Generic"].value
@@ -16,6 +17,7 @@ class GameController < ApplicationController
     when "SESSION_ENDED_REQUEST"
       # it's over
       message = "session over!"
+      session_end = true
     end
 
     output.add_speech(message) unless message.blank?
