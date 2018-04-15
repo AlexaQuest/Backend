@@ -11,9 +11,16 @@ class GameController < ApplicationController
       message = "Say something see what happens."
       session_end = false
     when "INTENT_REQUEST"
-      # our custom, simple intent from above that user matched
-      given = input.slots["Generic"].value
-      message = "You said, #{given}."
+      case input.name
+      when "AMAZON.CancelIntent"
+        message = "what the heck do you want me to cancel?"
+      when "AMAZON.HelpIntent"
+        # our custom, simple intent from above that user matched
+        message = "ok u asked for help!"
+      when "AMAZON.StopIntent"
+        message = "okay, ending game."
+        session_end = true
+      end
     when "SESSION_ENDED_REQUEST"
       # it's over
       message = "session over!"
