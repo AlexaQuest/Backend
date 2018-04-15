@@ -15,6 +15,7 @@ class GameController < ApplicationController
         @@current_txt = @@current_txt + [input.name]
       when "spin"
         message = "you spin me right round"
+        output.add_audio_url(root_url + "spin.mp3")
         @@current_txt = @@current_txt + [input.name]
       when "block"
         message = "block time"
