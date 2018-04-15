@@ -11,16 +11,28 @@ class GameController < ApplicationController
       message = "Say something see what happens."
     when "INTENT_REQUEST"
       case input.name
-      when "AMAZON.CancelIntent"
-        message = "what the heck do you want me to cancel?"
+      when "attack"
+        message = "oh yeah kill those enemies nice job"
+      when "spin"
+        message = "you spin me right round"
+      when "block"
+        message = "block time"
+      when "shoot"
+        message = "firing weapon"
+      when "cover"
+        message = "going into cover"
+      when "heal"
+        message = "looking for medical supplies"
+      when "charge"
+        message = "charging next attack"
       when "AMAZON.HelpIntent"
-        # our custom, simple intent from above that user matched
         message = "ok u asked for help!"
+      when "AMAZON.CancelIntent"
+        message = "okay, ending game."
+        session_end = true
       when "AMAZON.StopIntent"
         message = "okay, ending game."
         session_end = true
-      when "diego"
-        message = "aoisjdoisadjiasd?"
       end
     when "SESSION_ENDED_REQUEST"
       # it's over
@@ -30,5 +42,9 @@ class GameController < ApplicationController
 
     output.add_speech(message) unless message.blank?
     render json: output.build_response(session_end)
+  end
+
+  def game
+    render json: 
   end
 end
