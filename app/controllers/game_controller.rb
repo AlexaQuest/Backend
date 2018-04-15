@@ -41,7 +41,6 @@ class GameController < ApplicationController
         session_end = true
       end
     when "SESSION_ENDED_REQUEST"
-      # it's over
       message = "session over!"
       session_end = true
     end
@@ -50,12 +49,12 @@ class GameController < ApplicationController
     render json: output.build_response(session_end)
   end
 
-  @@current_txt = ""
+  @@current_txt = []
 
   def game
-    if !@@current_txt.blank?
-      render html: @@current_txt
-      @@current_txt = ""
+    if !@@current_txt.empty?
+      render html: @@current_txt[0]
+      @@current_txt = @@current_txt[1..-1]
     else
       render html: ""
     end
