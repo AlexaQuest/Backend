@@ -7,7 +7,6 @@ class GameController < ApplicationController
 
     case input.type
     when "LAUNCH_REQUEST"
-      # user talked to our skill but did not say something matching intent
       message = "Say something see what happens."
     when "INTENT_REQUEST"
       case input.name
@@ -45,6 +44,6 @@ class GameController < ApplicationController
   end
 
   def game
-    render json: 
+    render json: {game: true}
   end
 end
