@@ -19,6 +19,8 @@ class GameController < ApplicationController
       when "AMAZON.StopIntent"
         message = "okay, ending game."
         session_end = true
+      when "diego"
+        message = "aoisjdoisadjiasd?"
       end
     when "SESSION_ENDED_REQUEST"
       # it's over
