@@ -7,34 +7,33 @@ class GameController < ApplicationController
 
     case input.type
     when "LAUNCH_REQUEST"
-      message = "Welcome to AlexaQuest."
+      output.add_speech "Welcome to AlexaQuest."
     when "INTENT_REQUEST"
       case input.name
       when "attack"
-        output.add_speech "ATTACKING!"
+        output.add_speech "That'll leave a mark."
         @@current_txt = @@current_txt + [input.name]
       when "spin"
-        output.add_speech "you spin me right round"
+        output.add_speech "You spin me right round."
         @@current_txt = @@current_txt + [input.name]
       when "block"
-        output.add_speech "block time"
+        output.add_speech "I stand my ground."
         @@current_txt = @@current_txt + [input.name]
       when "shoot"
-        output.add_speech "firing weapon"
+        output.add_speech "Incoming!"
         @@current_txt = @@current_txt + [input.name]
       when "cover"
-        output.add_speech "going into cover"
+        output.add_speech "Where's that rock?"
         @@current_txt = @@current_txt + [input.name]
       when "heal"
-        output.add_speech "looking for medical supplies"
+        output.add_speech "I'm out of potions!"
         @@current_txt = @@current_txt + [input.name]
       when "charge"
-        output.add_speech "charging next attack"
+        output.add_speech "My blade is unwielding."
         @@current_txt = @@current_txt + [input.name]
       when "AMAZON.HelpIntent"
-        output.add_speech "say attack, spin, block, shoot, cover, heal, or charge."
+        output.add_speech "Say attack, spin, block, shoot, cover, heal, or charge to play."
       when "AMAZON.CancelIntent"
-        # session_end = true
       when "AMAZON.StopIntent"
         session_end = true
       end
