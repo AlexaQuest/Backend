@@ -12,18 +12,25 @@ class GameController < ApplicationController
       case input.name
       when "attack"
         message = "oh yeah kill those enemies nice job"
+        @@current_txt = input.name
       when "spin"
         message = "you spin me right round"
+        @@current_txt = input.name
       when "block"
         message = "block time"
+        @@current_txt = input.name
       when "shoot"
         message = "firing weapon"
+        @@current_txt = input.name
       when "cover"
         message = "going into cover"
+        @@current_txt = input.name
       when "heal"
         message = "looking for medical supplies"
+        @@current_txt = input.name
       when "charge"
         message = "charging next attack"
+        @@current_txt = input.name
       when "AMAZON.HelpIntent"
         message = "ok u asked for help!"
       when "AMAZON.CancelIntent"
@@ -43,7 +50,14 @@ class GameController < ApplicationController
     render json: output.build_response(session_end)
   end
 
+  @@current_txt = ""
+
   def game
-    render json: {game: true}
+    if !@@current_txt.blank?
+      render html: @@current_txt
+      @@current_txt = ""
+    else
+      render html: ""
+    end
   end
 end
