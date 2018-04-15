@@ -11,10 +11,10 @@ class GameController < ApplicationController
     when "INTENT_REQUEST"
       case input.name
       when "attack"
-        output.add_speech "ATTACK!"
+        output.add_speech "ATTACKING!"
         @@current_txt = @@current_txt + [input.name]
       when "spin"
-        output.add_audio_url(root_url + "spin.mp3", "token-here")
+        output.add_speech "you spin me right round"
         @@current_txt = @@current_txt + [input.name]
       when "block"
         output.add_speech "block time"
